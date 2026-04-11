@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Aspire/">
+    <Project Path="Aspire/ServiceDefaults/ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/MacroSSH.Core/MacroSSH.Core.csproj" />
+    <Project Path="src/MacroSSH.WebApp/MacroSSH.WebApp.csproj" />
+  </Folder>
+</Solution>
