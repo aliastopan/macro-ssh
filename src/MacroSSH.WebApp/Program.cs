@@ -1,6 +1,11 @@
+using System.Reflection;
+using Scalar.AspNetCore;
 using MacroSSH.WebApp.Components;
+using MacroSSH.WebApp.Extensions;
 
+var assembly = Assembly.GetExecutingAssembly();
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.AddServiceDefaults();
 
@@ -8,7 +13,20 @@ builder.AddServiceDefaults();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddOpenApi();
+builder.Services.AddEndpointDefinitions(assembly);
+
+
 var app = builder.Build();
+
+app.UseEndpointDefinitions();
+app.MapDefaultEndpoints();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+    app.MapScalarApiReference();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
