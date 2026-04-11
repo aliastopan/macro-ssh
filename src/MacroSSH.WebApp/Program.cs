@@ -2,12 +2,15 @@ using System.Reflection;
 using Scalar.AspNetCore;
 using MacroSSH.WebApp.Components;
 using MacroSSH.WebApp.Extensions;
+using MacroSSH.Core;
 
 var assembly = Assembly.GetExecutingAssembly();
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
 builder.AddServiceDefaults();
+
+builder.Services.AddCoreServices();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

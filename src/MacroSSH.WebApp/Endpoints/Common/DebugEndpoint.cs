@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+using MacroSSH.Core.Services;
 using MacroSSH.WebApp.Interfaces;
 
 namespace MacroSSH.WebApp.Endpoints.Common;
@@ -9,8 +11,10 @@ public sealed class DebugEndpoint : IEndpointDefinition
         app.MapGet("/api/hello", Debug);
     }
 
-    internal IResult Debug()
+    internal IResult Debug([FromServices] SampleService sampleService)
     {
-        return Results.Ok("Hello, World!");
+        var hello =  sampleService.GetHelloWorld();
+
+        return Results.Ok(hello);
     }
 }
