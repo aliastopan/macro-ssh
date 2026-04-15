@@ -11,4 +11,14 @@ public sealed class TestService
     {
         return "Test 1";
     }
+
+    public string GetTest2()
+    {
+        return "Test 2";
+    }
+
+    public string GetTest3()
+    {
+        return "Test 3";
+    }
 }
