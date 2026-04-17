@@ -10,7 +10,7 @@ var configuration = builder.Configuration;
 
 builder.AddServiceDefaults();
 
-builder.Services.AddCoreServices();
+builder.Services.AddCoreServices(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
