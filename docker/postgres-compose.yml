@@ -1,0 +1,36 @@
+name: macro-ssh-dev
+
+services:
+  macro-ssh-psql:
+    image: postgres:18.1
+    container_name: macro-ssh-psql
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=macro-ssh-db-dev
+    ports:
+      - "6432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+    networks:
+      - macro-ssh-network
+
+  pgweb:
+    image: sosedoff/pgweb:latest
+    container_name: macro-ssh-pgweb
+    environment:
+      - PGWEB_DATABASE_URL=postgres://admin:admin123@macro-ssh-psql:5432/macro-ssh-db-dev?sslmode=disable
+    ports:
+      - "9081:8081"
+    networks:
+      - macro-ssh-network
+    depends_on:
+      - macro-ssh-psql
+    restart: unless-stopped
+
+networks:
+  macro-ssh-network:
+    driver: bridge
+
+volumes:
+  pgdata:
