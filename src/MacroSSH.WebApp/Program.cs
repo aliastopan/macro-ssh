@@ -11,6 +11,8 @@ var configuration = builder.Configuration;
 builder.AddServiceDefaults();
 
 builder.Services.AddCoreServices();
+builder.Services.AddDapper(configuration);
+builder.Services.AddRepository();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
