@@ -2,7 +2,7 @@ name: macro-ssh-dev
 
 services:
   macro-ssh-psql:
-    image: postgres:16
+    image: postgres:18.1
     container_name: macro-ssh-psql
     environment:
       - POSTGRES_USER=admin
