@@ -11,7 +11,7 @@ var configuration = builder.Configuration;
 builder.AddServiceDefaults();
 
 builder.Services.AddCoreServices();
-builder.Services.AddDapper(configuration);
+builder.Services.AddDapper(builder.Configuration);
 builder.Services.AddRepository();
 
 // Add services to the container.
