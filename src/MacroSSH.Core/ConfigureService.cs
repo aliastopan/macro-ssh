@@ -11,6 +11,7 @@ public static class ConfigureService
     public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
         services.AddScoped<SampleService>();
+        services.AddScoped<SshService>();
 
         return services;
     }
